@@ -1,19 +1,10 @@
 #pragma once
 #include "stdafx.h"
-#include <iostream>
-#include <opencv2\core\core.hpp>
 #include <Eigen\Dense>
-#include <math.h>
 
-using namespace std;
-using namespace cv;
 using namespace Eigen;
 
-double eps(double x);
-double eps(float x);
-double fourfloor(double a);
 MatrixXf getFactor(Mat xs);
-void test();
 
 /**
 * 借助Eigen矩阵运算库实现Matlab中的null函数，计算齐次方程组Ax=0

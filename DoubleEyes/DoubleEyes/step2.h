@@ -4,6 +4,8 @@
 #include <thread>
 #include "MatlabNull.h" 
 
+using namespace std;
+using namespace cv;
 
 #define BASELINE 6.0		//基线
 #define FOCUS 80.0			//焦距
@@ -13,12 +15,7 @@
 //#define V0 U0
 #define ONEPLEX 10.0/15.0	//图像坐标系中单位像素
 #define DELTA 20			//
-#define FUSIONSIZE 150.0	//融合尺寸
+#define FUSIZE 200			//融合矩阵缩放指标
 
-class UltrasoundImageFusion {
-public:
-	static void ultrasoundImageFusion(Mat backgroundL, Mat backgroundR, Mat ultrasoundImg, vector<Point2f> leftPs, vector<Point2f> rightPs, double angle, double alpha);
-	static int maxvalue_xl;
-	static int maxvalue_xr;
-	static int maxvalue_y;
-};
+void step2processing(Mat background, Mat cs, Mat cs_sector, vector<Point2f> plexL, vector<Point2f> plexR);
+Mat step2processing(Mat background, Mat cs, Mat cs_sector, vector<Point2f> plexL, vector<Point2f> plexR, double angle, Point2f startp, double alpha, double flag);

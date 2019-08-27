@@ -9,8 +9,6 @@
 
 #define PI 3.1415926
 
-using namespace cv;
-using namespace std;
 
 Mat mergeFrame(Mat frame_up, Mat img, int bias, double percent);
 vector<Mat> divideFrame(Mat &frame, bool vertical = 0);

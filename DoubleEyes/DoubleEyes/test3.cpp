@@ -36,7 +36,7 @@ vector<vector<Point3f>> keyPointsFromPlex2Camera(vector<Point2i> leftImg, vector
 }
 
 // 求平面方程的四个系数
-MatrixXf getScanPanelFactors(Mat keyPoints) {
+MatrixXf getScanPanelFactors3(Mat keyPoints) {
 	return getFactor(keyPoints);
 }
 

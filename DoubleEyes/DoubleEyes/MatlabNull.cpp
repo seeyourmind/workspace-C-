@@ -16,9 +16,10 @@ MatrixXf getFactor(Mat xs) {
 		system("pause");
 		exit(-1);
 	}
-	for (int i = 0; i < xs.rows; i++) {
-		for (int j = 0; j < xs.cols; j++) {
-			m(i, j) = xs.at<float>(i, j);
+	for (int i = 0; i < xs.rows; ++i) {
+		uchar* p = xs.ptr<uchar>(i);
+		for (int j = 0; j < xs.cols; ++j) {
+			m(i, j) = p[j];
 		}
 		m(i, 3) = 1;
 	}
@@ -29,7 +30,7 @@ MatrixXf getFactor(Mat xs) {
 	double tol = max(3, 4) * eps(double(s.maxCoeff()));
 	int r = (s.array() > tol).select(MatrixXf::Ones(s.rows(),s.cols()),MatrixXf::Zero(s.rows(),s.cols())).sum();
 	MatrixXf factorM = V.rightCols(m.cols() - r);
-	for (int i = 0; i < factorM.size(); i++) {
+	for (int i = 0; i < factorM.size(); ++i) {
 		double f = fourfloor(factorM(3)) > 0 ? factorM(3) : 1;
 		factorM(i) = fourfloor(factorM(i) / f);
 		
